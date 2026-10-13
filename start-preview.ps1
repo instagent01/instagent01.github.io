@@ -1,9 +1,9 @@
 $ErrorActionPreference = 'Stop'
 $siteRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 try {
-    $response = Invoke-WebRequest -Uri 'http://127.0.0.1:4174/instagent/' -TimeoutSec 2
+    $response = Invoke-WebRequest -Uri 'http://127.0.0.1:4174/' -TimeoutSec 2
     if ($response.Content -match 'ScholarlyArticle' -and $response.Content -match 'InstAgent') {
-        Write-Host 'InstAgent website: http://127.0.0.1:4174/instagent/'
+        Write-Host 'InstAgent website: http://127.0.0.1:4174/'
         exit 0
     }
 } catch {}
@@ -14,5 +14,5 @@ if ($nodeCommand) { $nodePath = $nodeCommand.Source } else {
 if (-not (Test-Path -LiteralPath $nodePath)) { throw 'Node.js is required to preview this site.' }
 if (-not (Test-Path -LiteralPath (Join-Path $siteRoot 'dist\index.html'))) { throw 'Run npm ci and npm run build first.' }
 $serverPath = Join-Path $siteRoot 'tools\serve.mjs'
-Start-Process -FilePath $nodePath -ArgumentList ('"' + $serverPath + '"') -WorkingDirectory $siteRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $siteRoot 'preview.log') -RedirectStandardError (Join-Path $siteRoot 'preview-error.log')
-Write-Host 'InstAgent website: http://127.0.0.1:4174/instagent/'
+Start-Process -FilePath $nodePath -ArgumentList @(('"' + $serverPath + '"'), '--base=') -WorkingDirectory $siteRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $siteRoot 'preview.log') -RedirectStandardError (Join-Path $siteRoot 'preview-error.log')
+Write-Host 'InstAgent website: http://127.0.0.1:4174/'
