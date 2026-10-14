@@ -4,9 +4,9 @@ InstAgent: A Recursively Self-Improving Agent Operating System for Heterogeneous
 
 论文项目网站，采用 Orbital 视觉方案。包含作者与机构信息、真实机器人 Demo、协作机制、系统架构、实验结果和 BibTeX。
 
-目标网站地址：<https://instagent01.github.io/>。组织和仓库创建、GitHub Pages 部署完成后可访问。
+网站地址：<https://instagent01.github.io/>。已通过 GitHub Pages 发布。
 
-目标发布仓库：`instagent01/instagent01.github.io`。
+发布仓库：`instagent01/instagent01.github.io`。
 
 本仓库提供网站前端和公开展示素材。研究项目代码尚未发布，页面 Code 入口保留 Coming Soon。
 
